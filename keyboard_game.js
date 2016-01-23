@@ -5,6 +5,16 @@ canvas.width = 512;
 canvas.height = 480;
 document.body.appendChild(canvas);
 
+// Plank function
+var createWoodPlank = function () {
+	var plankReady = false;
+	var plankImage = new Image();
+	plankImage.onload = function () {
+		plankReady = true;
+	};
+	plankImage.src = "images/wood_plank.png";
+};
+
 // Background image
 var bgReady = false;
 var bgImage = new Image();
@@ -105,6 +115,10 @@ var render = function () {
 	ctx.textBaseline = "top";
 	ctx.fillText("Goblins caught: " + monstersCaught, 32, 32);
 };
+
+var generateWoodPlank = function () {
+	createWoodPlank();
+}
 
 // The main game loop
 var main = function () {
