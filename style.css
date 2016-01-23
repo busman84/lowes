@@ -1,0 +1,29 @@
+html {
+
+background-image: url("white_kitchen.jpg");
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: center;
+background-size: cover;
+}
+
+#test {
+  color: white;
+  text-decoration: none;
+}
+
+.imgNav {
+  height: 44px;
+  width: 44px;
+
+
+}
+
+nav {
+
+}
+
+#gameBtn1 {
+
+
+}
