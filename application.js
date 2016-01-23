@@ -7,8 +7,8 @@ var dragok = false;
 // Create the canvas
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
-canvas.width = 512;
-canvas.height = 480;
+canvas.width = 800;
+canvas.height = 800;
 document.body.appendChild(canvas);
 
 // Background image
@@ -56,6 +56,7 @@ function draw() {
  ctx.drawImage(bgImage, 0, 0);
  ctx.fillStyle = "#444444";
  rect(x - 15, y - 15, 30, 30);
+ ctx.fillStyle = "images/monster.png"
 };
 
 
