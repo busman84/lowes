@@ -5,6 +5,16 @@ canvas.width = 512;
 canvas.height = 480;
 document.body.appendChild(canvas);
 
+// Plank function
+var createWoodPlank = function () {
+	var plankReady = false;
+	var plankImage = new Image();
+	plankImage.onload = function () {
+		plankReady = true;
+	};
+	plankImage.src = "images/wood_plank.png";
+};
+
 // Background image
 var bgReady = false;
 var bgImage = new Image();
@@ -73,15 +83,15 @@ var update = function (modifier) {
 	}
 
 	// Are they touching?
-	// if (
-	// 	hero.x <= (monster.x + 32)
-	// 	&& monster.x <= (hero.x + 32)
-	// 	&& hero.y <= (monster.y + 32)
-	// 	&& monster.y <= (hero.y + 32)
-	// ) {
-	// 	++monstersCaught;
-	// 	reset();
-	// }
+	if (
+		hero.x <= (monster.x + 32)
+		&& monster.x <= (hero.x + 32)
+		&& hero.y <= (monster.y + 32)
+		&& monster.y <= (hero.y + 32)
+	) {
+		++monstersCaught;
+		reset();
+	}
 };
 
 // Draw everything
@@ -106,6 +116,10 @@ var render = function () {
 	ctx.fillText("Goblins caught: " + monstersCaught, 32, 32);
 };
 
+var generateWoodPlank = function () {
+	createWoodPlank();
+}
+
 // The main game loop
 var main = function () {
 	var now = Date.now();
@@ -128,11 +142,3 @@ requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame
 var then = Date.now();
 reset();
 main();
-
-
-
-
-
-
-
-
