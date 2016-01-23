@@ -22,7 +22,6 @@
 					dataType: 'json',
 					data: '',
 					success: function (data, textStatus, xhr) {
-						console.log(data);
 						$('#results').html('');
 						for (var i = 0; i < 5; i++) {
 							$("#results").append("<li>"+ data['storeLocation'][i]['storeName'] + " " + data['storeLocation'][i]['address1'] + ", " + data['storeLocation'][i]['city'] + ', ' + data['storeLocation'][i]['state'] + " " + data['storeLocation'][i]['zip'] + " " + data['storeLocation'][i]['phone'] + "</li>");
@@ -33,12 +32,16 @@
 					}
 				});
 			});
+			$('.close-button').click(function (){
+				$('#results').html('');
+				$('#zip').val('');
+			})
 		});
     </script>
 </head>
 <body>
 <!-- Trigger the modal with a button -->
-				<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Store Locator</button>
+				<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">Store Locator</button>
 
 <!-- Modal -->
 				<div id="myModal" class="modal fade" role="dialog">
@@ -47,7 +50,7 @@
 <!-- Modal content-->
 						<div class="modal-content">
 							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<button type="button" class="close close-button" data-dismiss="modal">&times;</button>
 							<h4 class="modal-title">Closest Stores</h4>
 						</div>
 						<div class="modal-body">
@@ -57,7 +60,7 @@
 							</ul>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-default close-button" data-dismiss="modal">Close</button>
 						</div>
 						</div>
 
