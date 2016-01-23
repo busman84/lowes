@@ -7,23 +7,56 @@ background-position: center;
 background-size: cover;
 }
 
-#test {
-  color: white;
-  text-decoration: none;
-}
 
+.container-fluid{
+  margin-left: 2.5em !important;
+  margin-top: -.65em !important;
+  margin-bottom: -1em !important;
+
+}
 .imgNav {
-  height: 44px;
-  width: 44px;
+  height: 10em;
+  width: 10em;
+  margin-left: -1em;
+  padding-right: 16em;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+  background-color: #01bcf0;
+  border: solid 1px white;
+
 
 
 }
 
-nav {
-
+.navColor {
+    background-color: #01bcf0;
+    border-color: #E7E7E7;
+    border: solid 1px white;
 }
 
 #gameBtn1 {
+  background-image: url("images/gameicon.png");
+  background-color: #01bcf0;
+  border: solid 1px white;
+  border-left: none;
 
 
 }
+#gameBtn2{
+  background-image: url("images/search_icon.png");
+  border: solid 1px white;
+}
+
+#gameBtn3{
+  background-image: url("images/profileicon_360.png");
+  background-size: 40%;
+}
+
+#gameBtn4{
+  background-image: url("images/locationicon_360.png");
+  background-size: 30%;
+  border-right: none;
+
+}
+
