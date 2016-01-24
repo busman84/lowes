@@ -131,7 +131,7 @@ Grill.prototype.contains = function(mx, my) {
 
 function Hero(p, x, y, w, h) {
     var heroPic = new Image();
-    heroPic.src = "images/deck3.png"
+    heroPic.src = "images/brownwood.png"
     this.p = p || heroPic
     this.x = x || 0
     this.y = y || 0
@@ -142,11 +142,57 @@ function Hero(p, x, y, w, h) {
 //draws hero in given context
 Hero.prototype.draw = function(ctx) {
         var img = document.createElement("img");
-        img.src = "images/deck3.png";
+        img.src = "images/brownwood.png";
         ctx.drawImage(img, this.x, this.y, this.w, this.h);
     }
     //Determine if a point is inside hero's bounds
 Hero.prototype.contains = function(mx, my) {
+    // All we have to do is make sure the Mouse X,Y fall in the area between
+    // the shape's X and (X + Width) and its Y and (Y + Height)
+    return (this.x <= mx) && (this.x + this.w >= mx) &&
+        (this.y <= my) && (this.y + this.h >= my);
+}
+function White(p, x, y, w, h) {
+    var heroPic = new Image();
+    heroPic.src = "images/white.png"
+    this.p = p || heroPic
+    this.x = x || 0
+    this.y = y || 0
+    this.w = w || 10
+    this.h = h || 10
+
+}
+//draws hero in given context
+White.prototype.draw = function(ctx) {
+        var img = document.createElement("img");
+        img.src = "images/white.png";
+        ctx.drawImage(img, this.x, this.y, this.w, this.h);
+    }
+    //Determine if a point is inside hero's bounds
+White.prototype.contains = function(mx, my) {
+    // All we have to do is make sure the Mouse X,Y fall in the area between
+    // the shape's X and (X + Width) and its Y and (Y + Height)
+    return (this.x <= mx) && (this.x + this.w >= mx) &&
+        (this.y <= my) && (this.y + this.h >= my);
+}
+function Light(p, x, y, w, h) {
+    var heroPic = new Image();
+    heroPic.src = "images/lightbrown.png"
+    this.p = p || heroPic
+    this.x = x || 0
+    this.y = y || 0
+    this.w = w || 10
+    this.h = h || 10
+
+}
+//draws hero in given context
+Light.prototype.draw = function(ctx) {
+        var img = document.createElement("img");
+        img.src = "images/lightbrown.png";
+        ctx.drawImage(img, this.x, this.y, this.w, this.h);
+    }
+    //Determine if a point is inside hero's bounds
+Light.prototype.contains = function(mx, my) {
     // All we have to do is make sure the Mouse X,Y fall in the area between
     // the shape's X and (X + Width) and its Y and (Y + Height)
     return (this.x <= mx) && (this.x + this.w >= mx) &&
@@ -204,6 +250,8 @@ function CanvasState(canvas) {
     this.valid = false; // when set to false, the canvas will redraw everything
     this.shapes = []; // the collection of things to be drawn
     this.heros = []; // the collection of heroes to be drawn
+    this.whites = [];
+    this.lights = [];
     this.picnics = [];
     this.grills = [];
     this.backgrounds = [];
@@ -241,16 +289,46 @@ function CanvasState(canvas) {
         var grills = myState.grills;
         var pinklcs = myState.pinklcs;
         var yellowlcs = myState.yellowlcs;
+        var whites = myState.whites;
+        var lights = myState.lights;
         var l = shapes.length;
         var hl = heros.length;
         var pl = picnics.length;
         var bl = backgrounds.length;
-        var gl = grills.length
-        var pinkl = pinklcs.length
-        var yl = yellowlcs.length
+        var gl = grills.length;
+        var pinkl = pinklcs.length;
+        var yl = yellowlcs.length;
+        var wl = whites.length;
+        var ll = lights.length;
         for (var i = hl - 1; i >= 0; i--) {
             if (heros[i].contains(mx, my)) {
                 var mySel = heros[i];
+                // Keep track of where in the object we clicked
+                // so we can move it smoothly (see mousemove)
+                myState.dragoffx = mx - mySel.x;
+                myState.dragoffy = my - mySel.y;
+                myState.dragging = true;
+                myState.selection = mySel;
+                myState.valid = false;
+                return;
+            }
+        }
+        for (var i = ll - 1; i >= 0; i--) {
+            if (lightss[i].contains(mx, my)) {
+                var mySel = lightss[i];
+                // Keep track of where in the object we clicked
+                // so we can move it smoothly (see mousemove)
+                myState.dragoffx = mx - mySel.x;
+                myState.dragoffy = my - mySel.y;
+                myState.dragging = true;
+                myState.selection = mySel;
+                myState.valid = false;
+                return;
+            }
+        }
+        for (var i = wl - 1; i >= 0; i--) {
+            if (whites[i].contains(mx, my)) {
+                var mySel = whites[i];
                 // Keep track of where in the object we clicked
                 // so we can move it smoothly (see mousemove)
                 myState.dragoffx = mx - mySel.x;
@@ -386,6 +464,14 @@ CanvasState.prototype.addHero = function(hero) {
     this.heros.push(hero);
     this.valid = false;
 }
+CanvasState.prototype.addWhite = function(white) {
+    this.whites.push(white);
+    this.valid = false;
+}
+CanvasState.prototype.addLight = function(light) {
+    this.lights.push(light);
+    this.valid = false;
+}
 CanvasState.prototype.addPicnic = function(picnic) {
     this.picnics.push(picnic);
     this.valid = false;
@@ -418,6 +504,8 @@ CanvasState.prototype.draw = function() {
         var ctx = this.ctx;
         var shapes = this.shapes;
         var heros = this.heros;
+        var lights = this.lights;
+        var whites = this.whites;
         var picnics = this.picnics;
         var grills = this.grills;
         var backgrounds = this.backgrounds;
@@ -453,6 +541,22 @@ CanvasState.prototype.draw = function() {
             if (hero.x > this.width || hero.y > this.height ||
                 hero.x + hero.w < 0 || hero.y + hero.h < 0) continue;
             heros[j].draw(ctx);
+        }
+        var wl = whites.length;
+        for (var j = 0; j < hl; j++) {
+            var white = whites[j];
+            // We can skip the drawing of elements that have moved off the screen:
+            if (white.x > this.width || white.y > this.height ||
+                white.x + white.w < 0 || white.y + white.h < 0) continue;
+            whites[j].draw(ctx);
+        }
+        var ll = lights.length;
+        for (var j = 0; j < hl; j++) {
+            var light = lights[j];
+            // We can skip the drawing of elements that have moved off the screen:
+            if (light.x > this.width || light.y > this.height ||
+                light.x + light.w < 0 || light.y + light.h < 0) continue;
+            lights[j].draw(ctx);
         }
         var pl = picnics.length;
         for (var k = 0; k < pl; k++) {
@@ -561,7 +665,13 @@ function init() {
     $("#yellowlc").click(function() {
         s.addGrill(new Yellowlc(hero3Pic, 30, 30, 50, 50));
     });
-    $("#wood").click(function() {
+    $("#b_wood").click(function() {
+        s.addGrill(new Hero(hero3Pic, 30, 30, 50, 50));
+    });
+    $("#w_wood").click(function() {
+        s.addGrill(new Hero(hero3Pic, 30, 30, 50, 50));
+    });
+    $("#l_wood").click(function() {
         s.addGrill(new Hero(hero3Pic, 30, 30, 50, 50));
     });
 }
