@@ -57,7 +57,7 @@ body {
   margin-top: 2em;
 }
 
-@media (max-width: 670px){
+@media (max-width: 675px){
   .text{
     font-size: 5em;
   }
@@ -65,3 +65,36 @@ body {
   background-color: white;
 }
 }
+@media (min-width: 675px) and (max-width: 900px){
+  .toolBelt{
+  margin-left: 0em;
+  }
+  .navImg {
+  height: 3em;
+  width: 3em;
+}
+  #cart{
+  height: 1em;
+  width: 1em;
+  }
+}
+@media (min-width: 901px) and (max-width: 1270px){
+  .toolBelt{
+  margin-left: 2em;
+  }
+  .navImg {
+  height: 5em;
+  width: 5em;
+}
+  #cart{
+  height: 2em;
+  width: 2em;
+  }
+}
+
+
+
+
+
+
+
