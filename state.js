@@ -657,7 +657,7 @@ function init() {
         s.addGrill(new Grill(hero3Pic, 30, 30, 50, 50));
     });
     $("#picnic").click(function() {
-        s.addPicnic(new Picnic(hero3Pic, 30, 30, 50, 50));
+        s.addPicnic(new Picnic(hero3Pic, 30, 30, 50, 30));
     });
     $("#pinklc").click(function() {
         s.addPinklc(new Pinklc(hero3Pic, 30, 30, 50, 50));
@@ -666,13 +666,13 @@ function init() {
         s.addYellowlc(new Yellowlc(hero3Pic, 30, 30, 50, 50));
     });
     $("#wood").click(function() {
-        s.addHero(new Hero(hero3Pic, 30, 30, 50, 50));
+        s.addHero(new Hero(hero3Pic, 30, 30, 100, 100));
     });
     $("#w_wood").click(function() {
-        s.addWhite(new White(hero3Pic, 30, 30, 50, 50));
+        s.addWhite(new White(hero3Pic, 30, 30, 50, 10));
     });
     $("#l_wood").click(function() {
-        s.addLight(new Light(hero3Pic, 30, 30, 50, 50));
+        s.addLight(new Light(hero3Pic, 30, 30, 20, 40));
     });
 }
 
