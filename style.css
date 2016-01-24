@@ -1,8 +1,14 @@
+
+
+
 header {
   background-color: #01bcf0;
 }
 body {
-  background-color: #e5f8fd;
+  background-image: url("images/white_kitchen.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
 }
 
@@ -14,8 +20,8 @@ p{
 }
 
 #lowesImg{
-  height: 10em;
-  width: 25em;
+  height: 5em;
+  width: 12em;
 }
 
 nav {
@@ -89,8 +95,8 @@ nav {
   .navbar {
     position: absolute;
     bottom: 0px;
+    display: none;
   }
-
 
 }
 
