@@ -314,8 +314,8 @@ function CanvasState(canvas) {
             }
         }
         for (var i = ll - 1; i >= 0; i--) {
-            if (lightss[i].contains(mx, my)) {
-                var mySel = lightss[i];
+            if (lights[i].contains(mx, my)) {
+                var mySel = lights[i];
                 // Keep track of where in the object we clicked
                 // so we can move it smoothly (see mousemove)
                 myState.dragoffx = mx - mySel.x;
@@ -543,7 +543,7 @@ CanvasState.prototype.draw = function() {
             heros[j].draw(ctx);
         }
         var wl = whites.length;
-        for (var j = 0; j < hl; j++) {
+        for (var j = 0; j < wl; j++) {
             var white = whites[j];
             // We can skip the drawing of elements that have moved off the screen:
             if (white.x > this.width || white.y > this.height ||
@@ -551,7 +551,7 @@ CanvasState.prototype.draw = function() {
             whites[j].draw(ctx);
         }
         var ll = lights.length;
-        for (var j = 0; j < hl; j++) {
+        for (var j = 0; j < ll; j++) {
             var light = lights[j];
             // We can skip the drawing of elements that have moved off the screen:
             if (light.x > this.width || light.y > this.height ||
@@ -657,22 +657,22 @@ function init() {
         s.addGrill(new Grill(hero3Pic, 30, 30, 50, 50));
     });
     $("#picnic").click(function() {
-        s.addGrill(new Picnic(hero3Pic, 30, 30, 50, 50));
+        s.addPicnic(new Picnic(hero3Pic, 30, 30, 50, 30));
     });
     $("#pinklc").click(function() {
-        s.addGrill(new Pinklc(hero3Pic, 30, 30, 50, 50));
+        s.addPinklc(new Pinklc(hero3Pic, 30, 30, 50, 50));
     });
     $("#yellowlc").click(function() {
-        s.addGrill(new Yellowlc(hero3Pic, 30, 30, 50, 50));
+        s.addYellowlc(new Yellowlc(hero3Pic, 30, 30, 50, 50));
     });
-    $("#b_wood").click(function() {
-        s.addGrill(new Hero(hero3Pic, 30, 30, 50, 50));
+    $("#wood").click(function() {
+        s.addHero(new Hero(hero3Pic, 30, 30, 100, 100));
     });
     $("#w_wood").click(function() {
-        s.addGrill(new Hero(hero3Pic, 30, 30, 50, 50));
+        s.addWhite(new White(hero3Pic, 30, 30, 50, 10));
     });
     $("#l_wood").click(function() {
-        s.addGrill(new Hero(hero3Pic, 30, 30, 50, 50));
+        s.addLight(new Light(hero3Pic, 30, 30, 20, 40));
     });
 }
 
