@@ -1,62 +1,98 @@
-html {
-
-background-image: url("images/white_kitchen.jpg");
-background-repeat: no-repeat;
-background-attachment: fixed;
-background-position: center;
-background-size: cover;
-}
-
-
-.container-fluid{
-  margin-left: 2.5em !important;
-  margin-top: -.65em !important;
-  margin-bottom: -1em !important;
-
-}
-.imgNav {
-  height: 10em;
-  width: 10em;
-  margin-left: -1em;
-  padding-right: 16em;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 50%;
+header {
   background-color: #01bcf0;
-  border: solid 1px white;
+}
+body {
+  background-color: #e5f8fd;
 
+}
 
+p{
+  font-size: 3em;
+  padding-left: 1em;
+  font-family: lato;
 
+}
+
+#lowesImg{
+  height: 10em;
+  width: 25em;
+}
+
+nav {
+  border: none !important;
 }
 
 .navColor {
     background-color: #01bcf0;
-    border-color: #E7E7E7;
-    border: solid 1px white;
+    /*border-color: #E7E7E7;*/
+  }
+
+.imgNav {
+  height: 5em;
+  width: 5em;
+  /*padding-right: 5em;*/
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+  background-color: #01bcf0;
+  display: inline-block;
+  margin-bottom: -5px;
 }
+
+
 
 #gameBtn1 {
   background-image: url("images/gameicon.png");
-  background-color: #01bcf0;
-  border: solid 1px white;
-  border-left: none;
-
-
+  background-repeat: no-repeat;
+  padding-left: 50px;
 }
 #gameBtn2{
   background-image: url("images/search_icon.png");
-  border: solid 1px white;
+  background-repeat: no-repeat;
+  border-left: solid .5em white;
+  border-top: none;
+
 }
 
 #gameBtn3{
   background-image: url("images/profileicon_360.png");
   background-size: 40%;
+  border-left: solid .5em white;
+  background-repeat: no-repeat;
+
+
 }
 
 #gameBtn4{
   background-image: url("images/locationicon_360.png");
   background-size: 30%;
-  border-right: none;
+  border-left: solid .5em white;
+  background-repeat: no-repeat;
+}
+
+.pagePics {
+  width: 10em;
+  height: 10em;
+  position: relative;
 
 }
+
+
+
+@media (max-width: 650px) {
+  .pagePics {
+    width: 6em;
+    height: 6em;
+    position: relative;
+  }
+  .navbar {
+    position: absolute;
+    bottom: 0px;
+  }
+
+
+}
+
+
 
