@@ -84,7 +84,7 @@ Pinklc.prototype.contains = function(mx, my) {
 
 function Yellowlc(p, x, y, w, h) {
     var yellowlc = new Image();
-    yellowlc.src = "images/yellowlawnchair.png"
+    yellowlc.src = "images/yellowlawnchairL.png"
     this.p = p || yellowlc
     this.x = x || 0
     this.y = y || 0
@@ -94,7 +94,7 @@ function Yellowlc(p, x, y, w, h) {
 }
 Yellowlc.prototype.draw = function(ctx) {
         var img = document.createElement("img");
-        img.src = "images/yellowlawnchair.png";
+        img.src = "images/yellowlawnchairL.png";
         ctx.drawImage(img, this.x, this.y, this.w, this.h);
     }
     //Determine if a point is inside hero's bounds
