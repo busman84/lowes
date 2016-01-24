@@ -2,6 +2,7 @@
  
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -22,7 +23,7 @@
 						console.log(data);
 						$('#results').html('');
 						for (var i = 0; i < 5; i++) {
-							$("#results").append("<li>"+ data['storeLocation'][i]['storeName'] + " " + data['storeLocation'][i]['address1'] + ", " + data['storeLocation'][i]['city'] + ', ' + data['storeLocation'][i]['state'] + " " + data['storeLocation'][i]['zip'] + " " + data['storeLocation'][i]['phone'] + "<input type='button' class='my-store' id=" + data['storeLocation'][i]['storeNumber'] + " value='My Store'" + "</li>");
+							$("#results").append("<li>"+ data['storeLocation'][i]['storeName'] + " " + data['storeLocation'][i]['address1'] + ", " + data['storeLocation'][i]['city'] + ', ' + data['storeLocation'][i]['state'] + " " + data['storeLocation'][i]['zip'] + " " + data['storeLocation'][i]['phone'] + "<input type='button' class='my-store close-button' data-dismiss='modal' id=" + data['storeLocation'][i]['storeNumber'] + " value='My Store'" + "</li>");
 						};
 						$(".my-store").click(function() {
 							storeNum = $(this).attr('id');
