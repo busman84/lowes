@@ -1,16 +1,51 @@
 
 
-/*body {
+body {
   background-image: url("images/white_kitchen.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
 
-}*/
+}
+  #blackness{
+    background-color: black;
+
+  }
+  #bs-example-navbar-collapse-1{
+  }
+  #heartPic{
+    background-image: url("images/whitewishlistimage.png");
+    position: relative !important;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+
+  }
+  .navPic{
+    height: 30px;
+    width: 30px;
+  }
+
+  .navbar {
+    border: none !important;
+  }
+  .container-fluid {
+    background-color: #01bcf0;
+  }
   .navbar-header {
     float: none;
-    padding-bottom: 50px;
+    padding-bottom: 40px;
+  }
+
+  #lowesImg {
+    height: 5em;
+    width: 15em;
+  }
+
+  .navbar-brand{
+    padding: 20px;
+    margin-top: 0px;
   }
   .navbar-toggle {
     display: block;
@@ -37,9 +72,30 @@
   }
   .navbar-collapse.collapse.in{
     display: block !important;
+
+  }
+  .navbar-toggle{
+    /*background-color: orange;*/
+  }
+button {
+  border: none !important;
+}
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
   }
 
 
+/*mobile viewing*/
+@media (max-width:700px ){
+  #lowesImg {
+    height: 3em;
+    width: 9em;
+  }
+  .navbar-header {
+    padding-bottom: 20px;
+  }
+
+  }
 
 
 
